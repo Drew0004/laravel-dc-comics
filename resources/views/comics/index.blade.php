@@ -4,7 +4,7 @@
 
 @section('main-content')
 <h1>
-    Laravel Start 1
+    Comics index
 </h1>
 
 @endsection
