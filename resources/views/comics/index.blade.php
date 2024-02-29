@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', 'Home')
+@section('page-title', 'Comics')
 
 @section('main-content')
 <h1 class="my-4 text-center">
@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                   </ul>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <a href="{{ route('comics.show', ['comic' => $singleComic->id]) }}" class="btn btn-primary">Visualizza Comic</a>
                 </div>
               </div>
         </div>
