@@ -45,7 +45,22 @@
                         <label for="type" class="form-label">Tipo*</label>
                         <input type="text" class="form-control" id="type" name="type" placeholder="Inserisci il tipo..." maxlength="200" required>
                     </div>
-                
+
+                    <div class="mb-3">
+                        <label for="artists" class="form-label">Aggiungi artisti separati da virgola</label>
+                        <textarea class="form-control" id="artists" name="artists" rows="3" placeholder="Aggiungi artisti separati da ','..." maxlength="1024" required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="writers" class="form-label">Aggiungi scrittori separati da virgola</label>
+                        <textarea class="form-control" id="writers" name="writers" rows="3" placeholder="Aggiungi scrittori separati da ','..." maxlength="1024" required></textarea>
+                    </div>
+                    
+                    <button class="btn btn-success " type="submit">
+                        Aggiungi +
+                    </button>
+
+                    
                 </form>
             </div>
         </div>
