@@ -47,10 +47,10 @@ class ComicController extends Controller
         $comic->series = $comicData['series'];
         $comic->sale_date = $comicData['sale_date'];
         $comic->type = $comicData['type'];
-        $artistsArray[]= $comicData['artists'];
-        $comic->artists = json_encode($artistsArray);
-        $writersArray[]= $comicData['writers'];
-        $comic->writers = json_encode($writersArray);
+        $explodeArtists= explode(',',$comicData['artists']);
+        $comic->artists = json_encode($explodeArtists);
+        $explodeWriters= explode(',',$comicData['writers']);
+        $comic->writers = json_encode($explodeWriters);
         $comic->save();
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
@@ -75,7 +75,8 @@ class ComicController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $comic = Comic::findOrFail($id);
+        return view('comics.edit', compact('comic'));
     }
 
     /**
@@ -83,7 +84,27 @@ class ComicController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $comicData = $request->all();
+
+        $comic = Comic::findOrFail($id);
+
+        $comic->title = $comicData['title'];
+        $comic->description = $comicData['description'];
+        $comic->thumb = $comicData['thumb'];
+        //sostituisco il carattere speciale con spazio vuoto
+        $replacedTextPrice = str_replace('$', '', $comicData['price']);
+        $comic->price = floatval($replacedTextPrice);
+        $comic->series = $comicData['series'];
+        $comic->sale_date = $comicData['sale_date'];
+        $comic->type = $comicData['type'];
+        $explodeArtists= explode(',',$comicData['artists']);
+        $comic->artists = json_encode($explodeArtists);
+        $explodeWriters= explode(',',$comicData['writers']);
+        $comic->writers = json_encode($explodeWriters);
+        $comic->save();
+
+        return redirect()->route('comics.show', ['comic' => $comic->id]);
+
     }
 
     /**

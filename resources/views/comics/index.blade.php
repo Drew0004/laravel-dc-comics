@@ -37,7 +37,8 @@
                         </ul>
                     </div>
                   </ul>
-                  <a href="{{ route('comics.show', ['comic' => $singleComic->id]) }}" class="btn btn-primary">Visualizza Comic</a>
+                  <a href="{{ route('comics.show', ['comic' => $singleComic->id]) }}" class="btn btn-primary my-2">Visualizza Comic</a>
+                  <a href="{{ route('comics.edit', ['comic' => $singleComic->id]) }}" class="btn btn-warning text-white">Modifica Comic</a>
                 </div>
               </div>
         </div>
