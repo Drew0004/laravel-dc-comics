@@ -18,22 +18,20 @@
     ];
 @endphp
 
-<header>
-    <nav>
-        <ul>
-            @foreach ($links as $link)
-                <li>
-                    @if ($link['active'])
-                        <a href="{{ $link['url'] }}">
+<header class="bg-dark py-3">
+    <div class="container">
+        <nav>
+            <ul class="d-flex list-unstyled justify-content-between">
+                @foreach ($links as $link)
+                    <li>
+                        
+                        <a class="text-decoration-none text-white" href="{{ $link['url'] }}">
                             {{ $link['label'] }}
                         </a>
-                    @else
-                        <del>
-                            {{ $link['label'] }}
-                        </del>
-                    @endif
-                </li>
-            @endforeach
-        </ul>
-    </nav>
+    
+                    </li>
+                @endforeach
+            </ul>
+        </nav>
+    </div>
 </header>

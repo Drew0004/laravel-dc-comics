@@ -19,16 +19,16 @@
                     <li>Serie: {{ $comic->series }}</li>
                     <li>Data: {{ $comic->sale_date }}</li>
                     <li>Tipo: {{ $comic->type }}</li>
-                    <div class="border">
-                        <h2>Artisti:</h2>
+                    <div class="my-2">
+                        <h6>Artisti:</h6>
                         <ul>
                             @foreach (json_decode($comic->artists) as $singleArtist)
                                 <li>{{ $singleArtist }}</li>
                             @endforeach
                         </ul>
                     </div>
-                    <div class="border">
-                        <h2>Scrittori:</h2>
+                    <div class="my-2">
+                        <h6>Scrittori:</h6>
                         <ul>
                             @foreach (json_decode($comic->writers) as $singleWriter)
                                 <li>{{ $singleWriter }}</li>

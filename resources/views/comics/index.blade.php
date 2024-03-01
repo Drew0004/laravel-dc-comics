@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         @foreach ($comics as $singleComic)     
-        <div class="col-12">
+        <div class="col-3">
             <div class="card" style="width: 18rem;">
                 <img src="{{ $singleComic->thumb }}" class="card-img-top" alt="{{ $singleComic->title }}">
                 <div class="card-body">
@@ -20,16 +20,16 @@
                     <li>Serie: {{ $singleComic->series }}</li>
                     <li>Data: {{ $singleComic->sale_date }}</li>
                     <li>Tipo: {{ $singleComic->type }}</li>
-                    <div class="border">
-                        <h2>Artisti:</h2>
+                    <div>
+                        <h6 class="my-2">Artisti:</h6>
                         <ul>
                             @foreach (json_decode($singleComic->artists) as $singleArtist)
                                 <li>{{ $singleArtist }}</li>
                             @endforeach
                         </ul>
                     </div>
-                    <div class="border">
-                        <h2>Scrittori:</h2>
+                    <div>
+                        <h6 class="my-2">Scrittori:</h6>
                         <ul>
                             @foreach (json_decode($singleComic->writers) as $singleWriter)
                                 <li>{{ $singleWriter }}</li>
