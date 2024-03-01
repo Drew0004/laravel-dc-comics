@@ -33,25 +33,17 @@ class ComicController extends Controller
     {
         $comicData = $request->all();
 
-
-
-        // TODO: valido i dati, ma lo faremo in futuro
-
-        $comic = new Comic();
-        $comic->title = $comicData['title'];
-        $comic->description = $comicData['description'];
-        $comic->thumb = $comicData['thumb'];
-        //sostituisco il carattere speciale con spazio vuoto
         $replacedTextPrice = str_replace('$', '', $comicData['price']);
-        $comic->price = floatval($replacedTextPrice);
-        $comic->series = $comicData['series'];
-        $comic->sale_date = $comicData['sale_date'];
-        $comic->type = $comicData['type'];
+        $comicData['price'] = floatval($replacedTextPrice);
+
         $explodeArtists= explode(',',$comicData['artists']);
-        $comic->artists = json_encode($explodeArtists);
+        $comicData['artists'] = json_encode($explodeArtists);
+
         $explodeWriters= explode(',',$comicData['writers']);
-        $comic->writers = json_encode($explodeWriters);
-        $comic->save();
+        $comicData['writers'] = json_encode($explodeWriters);
+
+        $comic = Comic::create($comicData);
+
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
         dd($comicData);
@@ -88,20 +80,16 @@ class ComicController extends Controller
 
         $comic = Comic::findOrFail($id);
 
-        $comic->title = $comicData['title'];
-        $comic->description = $comicData['description'];
-        $comic->thumb = $comicData['thumb'];
-        //sostituisco il carattere speciale con spazio vuoto
         $replacedTextPrice = str_replace('$', '', $comicData['price']);
-        $comic->price = floatval($replacedTextPrice);
-        $comic->series = $comicData['series'];
-        $comic->sale_date = $comicData['sale_date'];
-        $comic->type = $comicData['type'];
+        $comicData['price'] = floatval($replacedTextPrice);
+
         $explodeArtists= explode(',',$comicData['artists']);
-        $comic->artists = json_encode($explodeArtists);
+        $comicData['artists'] = json_encode($explodeArtists);
+
         $explodeWriters= explode(',',$comicData['writers']);
-        $comic->writers = json_encode($explodeWriters);
-        $comic->save();
+        $comicData['writers'] = json_encode($explodeWriters);
+
+        $comic->update($comicData);
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
 
@@ -119,3 +107,39 @@ class ComicController extends Controller
         return redirect()->route('comics.index');
     }
 }
+
+
+//BACKUP STORE 
+    // TODO: valido i dati, ma lo faremo in futuro
+
+    // $comic = new Comic();
+    // $comic->title = $comicData['title'];
+    // $comic->description = $comicData['description'];
+    // $comic->thumb = $comicData['thumb'];
+    // //sostituisco il carattere speciale con spazio vuoto
+    // $replacedTextPrice = str_replace('$', '', $comicData['price']);
+    // $comic->price = floatval($replacedTextPrice);
+    // $comic->series = $comicData['series'];
+    // $comic->sale_date = $comicData['sale_date'];
+    // $comic->type = $comicData['type'];
+    // $explodeArtists= explode(',',$comicData['artists']);
+    // $comic->artists = json_encode($explodeArtists);
+    // $explodeWriters= explode(',',$comicData['writers']);
+    // $comic->writers = json_encode($explodeWriters);
+    // $comic->save();
+
+//BACKUP UPDATE
+    // $comic->title = $comicData['title'];
+    // $comic->description = $comicData['description'];
+    // $comic->thumb = $comicData['thumb'];
+    // //sostituisco il carattere speciale con spazio vuoto
+    // $replacedTextPrice = str_replace('$', '', $comicData['price']);
+    // $comic->price = floatval($replacedTextPrice);
+    // $comic->series = $comicData['series'];
+    // $comic->sale_date = $comicData['sale_date'];
+    // $comic->type = $comicData['type'];
+    // $explodeArtists= explode(',',$comicData['artists']);
+    // $comic->artists = json_encode($explodeArtists);
+    // $explodeWriters= explode(',',$comicData['writers']);
+    // $comic->writers = json_encode($explodeWriters);
+    // $comic->save();
