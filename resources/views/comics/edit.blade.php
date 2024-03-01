@@ -77,12 +77,11 @@
                         <textarea class="form-control" id="writers" name="writers" rows="3" placeholder="Aggiungi scrittori separati da ','..." maxlength="1024" required>{{ $replacedWriters }}"</textarea>
                     </div>
 
-                    <a href="{{ route('comics.index') }}" class="btn btn-danger">Annulla</a>
+                    <a href="{{ route('comics.index') }}" class="btn btn-warning text-white">Annulla</a>
                     
-                    <button class="btn btn-warning text-white" type="submit">
+                    <button class="btn btn-success text-white" type="submit">
                         Modifica
                     </button>
-
                     
                 </form>
             </div>

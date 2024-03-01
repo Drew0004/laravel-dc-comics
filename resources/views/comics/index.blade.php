@@ -37,8 +37,18 @@
                         </ul>
                     </div>
                   </ul>
-                  <a href="{{ route('comics.show', ['comic' => $singleComic->id]) }}" class="btn btn-primary my-2">Visualizza Comic</a>
-                  <a href="{{ route('comics.edit', ['comic' => $singleComic->id]) }}" class="btn btn-warning text-white">Modifica Comic</a>
+                  <a href="{{ route('comics.show', ['comic' => $singleComic->id]) }}" class="btn btn-primary">Visualizza Comic</a>
+                  <a href="{{ route('comics.edit', ['comic' => $singleComic->id]) }}" class="btn btn-warning text-white my-2">Modifica Comic</a>
+                  <form
+                    onsubmit="return confirm('Sei sicuro di voler eliminare questo Comic?');"
+                    action="{{ route('comics.destroy', ['comic' => $singleComic->id]) }}"
+                    method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">
+                        Elimina
+                    </button>
+                </form>
                 </div>
               </div>
         </div>
