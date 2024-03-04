@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Admin\Comic;
 
+// Form Requests
+use App\Http\Requests\StoreComicRequest;
+
 class ComicController extends Controller
 {
     /**
@@ -29,9 +32,10 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
-        $comicData = $request->all();
+        $validatedData = $request->validated();
+        $comicData = $validatedData;
 
         $replacedTextPrice = str_replace('$', '', $comicData['price']);
         $comicData['price'] = floatval($replacedTextPrice);
