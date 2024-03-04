@@ -32,5 +32,14 @@ class StoreComicRequest extends FormRequest
             'artists'=> 'required',
             'writers'=> 'required',
         ];
+        
+    }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Ci hai provato, Biricchino.',
+            'title.max' => 'Stessa cosa, non si entra.',
+        ];
     }
 }
